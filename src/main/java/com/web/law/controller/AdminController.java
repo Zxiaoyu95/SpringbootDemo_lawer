@@ -99,4 +99,11 @@ public class AdminController extends BaseController<Admin> {
         model.addAttribute("pageInfo",pageInfo);
         return "admin/analy";
     }
+
+    @RequestMapping("/jieshao")
+    public String jieshao(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5")int size,Model model){
+        Page<Admin> pageInfo = adminService.findByPage(page,size);
+        model.addAttribute("pageInfo",pageInfo);
+        return "admin/jieshao";
+    }
 }

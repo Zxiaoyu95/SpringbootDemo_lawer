@@ -65,6 +65,15 @@
 
             </dd>
         </dl>
+        <dl id="menu-jieshao">
+            <dt><i class="Hui-iconfont">&#xe65d;</i> 相关介绍<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a href="${pageContext.request.contextPath}/admin/jieshao" title="发展规划">公司企业发展规划</a></li>
+                </ul>
+
+            </dd>
+        </dl>
     </div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>

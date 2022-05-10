@@ -10,18 +10,20 @@
 <head>
     <meta charset="utf-8"><link rel="icon" href="https://static.jianshukeji.com/highcharts/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        /* css 代码  */
-    </style>
     <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
     <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
     <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <script src="https://cdn.highcharts.com.cn/highcharts/modules/data.js"></script>
+    <script src="https://cdn.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+    <script src="https://cdn.highcharts.com.cn/highcharts/modules/networkgraph.js"></script>
 </head>
 <body>
 <div id="container" style="min-width:400px;height:400px"></div>
 <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 <div id="container3" style="width: 550px; height: 400px; margin: 0 auto"></div>
 <div id="container4" style="width: 550px; height: 400px; margin: 0 auto"></div>
+<%--<div id="container5" style="width: 550px; height: 400px; margin: 0 auto"></div>--%>
+
 <script>
     var chart = Highcharts.chart('container',{
         chart: {
@@ -328,4 +330,141 @@
 
     });
 </script>
+<%--<script>--%>
+<%--    let container = document.getElementById('container5'),--%>
+<%--        highlightPoint = function(e) {--%>
+<%--            var chart,--%>
+<%--                point,--%>
+<%--                i,--%>
+<%--                event;--%>
+<%--            for (i = 0; i < Highcharts.charts.length; i = i + 1) {--%>
+<%--                chart = Highcharts.charts[i];--%>
+<%--                // Find coordinates within the chart--%>
+<%--                event = chart.pointer.normalize(e);--%>
+<%--                // Get the hovered point--%>
+<%--                point = chart.series[0].searchPoint(event, true);--%>
+<%--                if (point) {--%>
+<%--                    point.highlight(e);--%>
+<%--                }--%>
+<%--            }--%>
+<%--        };--%>
+
+<%--    ['mousemove', 'touchmove', 'touchstart'].forEach(function (eventType) {--%>
+<%--        container.addEventListener(--%>
+<%--            eventType,--%>
+<%--            function (e) {--%>
+<%--                highlightPoint(e);--%>
+<%--            }--%>
+<%--        );--%>
+<%--    });--%>
+<%--    /**--%>
+<%--     * 重写内部的方法， 这里是将提示框即十字准星的隐藏函数关闭--%>
+<%--     */--%>
+<%--    Highcharts.Pointer.prototype.reset = function () {--%>
+<%--        return undefined;--%>
+<%--    };--%>
+<%--    /**--%>
+<%--     * 高亮当前的数据点，并设置鼠标滑动状态及绘制十字准星线--%>
+<%--     */--%>
+<%--    Highcharts.Point.prototype.highlight = function (event) {--%>
+<%--        this.onMouseOver(); // 显示鼠标激活标识--%>
+<%--        this.series.chart.tooltip.refresh(this); // 显示提示框--%>
+<%--        this.series.chart.xAxis[0].drawCrosshair(event, this); // 显示十字准星线--%>
+<%--    };--%>
+<%--    /**--%>
+<%--     * 同步缩放效果，即当一个图表进行了缩放效果，其他图表也进行缩放--%>
+<%--     */--%>
+<%--    function syncExtremes(e) {--%>
+<%--        var thisChart = this.chart;--%>
+<%--        if (e.trigger !== 'syncExtremes') {--%>
+<%--            Highcharts.each(Highcharts.charts, function (chart) {--%>
+<%--                if (chart !== thisChart) {--%>
+<%--                    if (chart.xAxis[0].setExtremes) {--%>
+<%--                        chart.xAxis[0].setExtremes(e.min, e.max, undefined, false, { trigger: 'syncExtremes' });--%>
+<%--                    }--%>
+<%--                }--%>
+<%--            });--%>
+<%--        }--%>
+<%--    }--%>
+<%--    // 获取 JSON 数据，数据文件地址：--%>
+<%--    //https://github.com/highcharts/highcharts/blob/master/samples/data/activity.json--%>
+<%--    Highcharts.ajax({--%>
+<%--        url: 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/activity.json',--%>
+<%--        dataType: 'text',--%>
+<%--        success: function (activity) {--%>
+<%--            activity = JSON.parse(activity);--%>
+<%--            activity.datasets.forEach(function (dataset, i) {--%>
+<%--                // Add X values--%>
+<%--                dataset.data = Highcharts.map(dataset.data, function (val, j) {--%>
+<%--                    return [activity.xData[j], val];--%>
+<%--                });--%>
+<%--                var chartDiv = document.createElement('div');--%>
+<%--                chartDiv.className = 'chart';--%>
+<%--                container.appendChild(chartDiv);--%>
+
+<%--                Highcharts.chart(chartDiv, {--%>
+<%--                    chart: {--%>
+<%--                        marginLeft: 40, // Keep all charts left aligned--%>
+<%--                        spacingTop: 20,--%>
+<%--                        spacingBottom: 20--%>
+<%--                    },--%>
+<%--                    title: {--%>
+<%--                        text: dataset.name,--%>
+<%--                        align: 'left',--%>
+<%--                        margin: 0,--%>
+<%--                        x: 30--%>
+<%--                    },--%>
+<%--                    credits: {--%>
+<%--                        enabled: false--%>
+<%--                    },--%>
+<%--                    legend: {--%>
+<%--                        enabled: false--%>
+<%--                    },--%>
+<%--                    xAxis: {--%>
+<%--                        crosshair: true,--%>
+<%--                        events: {--%>
+<%--                            setExtremes: syncExtremes--%>
+<%--                        },--%>
+<%--                        labels: {--%>
+<%--                            format: '{value} km'--%>
+<%--                        }--%>
+<%--                    },--%>
+<%--                    yAxis: {--%>
+<%--                        title: {--%>
+<%--                            text: null--%>
+<%--                        }--%>
+<%--                    },--%>
+<%--                    tooltip: {--%>
+<%--                        positioner: function () {--%>
+<%--                            return {--%>
+<%--                                // right aligned--%>
+<%--                                x: this.chart.chartWidth - this.label.width,--%>
+<%--                                y: 10 // align to title--%>
+<%--                            };--%>
+<%--                        },--%>
+<%--                        borderWidth: 0,--%>
+<%--                        backgroundColor: 'none',--%>
+<%--                        pointFormat: '{point.y}',--%>
+<%--                        headerFormat: '',--%>
+<%--                        shadow: false,--%>
+<%--                        style: {--%>
+<%--                            fontSize: '18px'--%>
+<%--                        },--%>
+<%--                        valueDecimals: dataset.valueDecimals--%>
+<%--                    },--%>
+<%--                    series: [{--%>
+<%--                        data: dataset.data,--%>
+<%--                        name: dataset.name,--%>
+<%--                        type: dataset.type,--%>
+<%--                        color: Highcharts.getOptions().colors[i],--%>
+<%--                        fillOpacity: 0.3,--%>
+<%--                        tooltip: {--%>
+<%--                            valueSuffix: ' ' + dataset.unit--%>
+<%--                        }--%>
+<%--                    }]--%>
+<%--                });--%>
+<%--            });--%>
+<%--        }--%>
+<%--    });--%>
+<%--</script>--%>
 </body>
