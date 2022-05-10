@@ -21,6 +21,7 @@
 <div id="container" style="min-width:400px;height:400px"></div>
 <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 <div id="container3" style="width: 550px; height: 400px; margin: 0 auto"></div>
+<div id="container4" style="width: 550px; height: 400px; margin: 0 auto"></div>
 <script>
     var chart = Highcharts.chart('container',{
         chart: {
@@ -218,7 +219,7 @@
                 for (i = -19; i <= 0; i += 1) {
                     data.push({
                         x: time + i * 1000,
-                        y: Math.random()*20
+                        y: Math.random()*10
                     });
                 }
                 return data;
@@ -243,6 +244,87 @@
             }
         });
         $('#container3').highcharts(json);
+
+    });
+</script>
+
+<script language="JavaScript">
+    $(document).ready(function() {
+        var chart = {
+            type: 'scatter',
+            margin: [70, 50, 60, 80],
+            events: {
+                click: function (e) {
+                    // find the clicked values and the series
+                    var x = e.xAxis[0].value,
+                        y = e.yAxis[0].value,
+                        series = this.series[0];
+                    // Add it
+                    series.addPoint([x, y]);
+                }
+            }
+        };
+        var title = {
+            text: '自定义案例节点'
+        };
+        var subtitle = {
+            text: 'Click the plot area to add a point. Click a point to remove it.'
+        };
+        var xAxis = {
+            gridLineWidth: 1,
+            minPadding: 0.2,
+            maxPadding: 0.2,
+            maxZoom: 60
+        };
+        var yAxis = {
+            title: {
+                text: '案例'
+            },
+            minPadding: 0.2,
+            maxPadding: 0.2,
+            maxZoom: 60,
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        };
+        var legend = {
+            enabled: false
+        };
+        var exporting = {
+            enabled: false
+        };
+        var plotOptions = {
+            series: {
+                lineWidth: 1,
+                point: {
+                    events: {
+                        'click': function () {
+                            if (this.series.data.length > 1) {
+                                this.remove();
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        var series= [{
+            data: [[20, 20], [80, 80]]
+        }];
+
+        var json = {};
+        json.chart = chart;
+        json.title = title;
+        json.subtitle = subtitle;
+        json.xAxis = xAxis;
+        json.yAxis = yAxis;
+        json.legend = legend;
+        json.exporting = exporting;
+        json.series = series;
+        json.plotOptions = plotOptions;
+        $('#container4').highcharts(json);
 
     });
 </script>
