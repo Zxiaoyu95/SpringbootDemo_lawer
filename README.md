@@ -1,9 +1,9 @@
 # SpringbootDemo_lawer
 ## ck demo for sidejob
-JDK    --1.8
-MySQL  --5.2
-Maven  --3.6
-SpringBoot  2.3.3.RELEASE
+### JDK    --1.8
+### MySQL  --5.2
+### Maven  --3.6
+### SpringBoot  2.3.3.RELEASE
 
 ![image](https://raw.githubusercontent.com/Zxiaoyu95/SpringbootDemo_lawer/master/pictureapp/1.PNG)
 ![image](https://raw.githubusercontent.com/Zxiaoyu95/SpringbootDemo_lawer/master/pictureapp/2.PNG)
