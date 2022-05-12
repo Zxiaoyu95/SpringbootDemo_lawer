@@ -71,9 +71,13 @@
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/admin/jieshao" title="发展规划">公司企业发展规划</a></li>
                 </ul>
+                <ul>
+                    <li><a href="${pageContext.request.contextPath}/admin/map" title="业务分布">企业业务分布</a></li>
+                </ul>
 
             </dd>
         </dl>
+
     </div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
