@@ -32,6 +32,7 @@ public class LawyerController extends BaseController<Lawyer> {
     @Autowired
     public LawyerController(LawyerService lawyerService){
         this.lawyerService = lawyerService;
+
         super.init(lawyerService);
     }
 

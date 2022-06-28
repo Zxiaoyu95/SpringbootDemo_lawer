@@ -57,12 +57,14 @@
             </dd>
         </dl>
         <dl id="menu-analy">
-            <dt><i class="Hui-iconfont">&#xe64d;</i> 数据案例分析<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dt><i class="Hui-iconfont">&#xe64d;</i> 数据案例计划与分析<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
+                <ul>
+                    <li><a href="${pageContext.request.contextPath}/admin/plan" title="案例任务自定义计划">案例任务自定义计划</a></li>
+                </ul>
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/admin/analy" title="案例处理图表">案例处理图表</a></li>
                 </ul>
-
             </dd>
         </dl>
         <dl id="menu-jieshao">
